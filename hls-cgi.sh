@@ -13,7 +13,7 @@ echo "Content-Type: application/x-mpegURL"
 echo ""
 if [ ! -f $TSDIR/main.pl ];then
   $FF -i "$INP" -loglevel quiet -flags +global_header+loop+mv4 -bsf h264_mp4toannexb -threads 0 -c copy -q:v 1 -q:a 1 -map 0 -f segment \
-  -segment_list $TSDIR/main.pl -segment_list_type flat -segment_time $SEGTIME -segment_format mpegts $TSDIR/s-%1d.mta </dev/null >/dev/null 2>&1 && touch $TSDIR/ts.ok &
+  -segment_list $TSDIR/main.pl -segment_list_type flat -segment_time $SEGTIME -segment_format mpegts $TSDIR/s-%1d.ts </dev/null >/dev/null 2>&1 && touch $TSDIR/ts.ok &
   echo -e "#EXTM3U\n#EXT-X-TARGETDURATION:$SEGTIME\n#EXT-X-MEDIA-SEQUENCE: 0"
   for ((i=0;i<=$TT;i++));do
     echo -e "#EXTINF:$SEGTIME, \nhttp://$HTTP_HOST/mpts/$BASEFILE/s-$i.mta"
