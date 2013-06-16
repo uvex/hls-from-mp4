@@ -16,7 +16,7 @@ if [ ! -f $TSDIR/main.pl ];then
   -segment_list $TSDIR/main.pl -segment_list_type flat -segment_time $SEGTIME -segment_format mpegts $TSDIR/s-%1d.ts </dev/null >/dev/null 2>&1 && touch $TSDIR/ts.ok &
   echo -e "#EXTM3U\n#EXT-X-TARGETDURATION:$SEGTIME\n#EXT-X-MEDIA-SEQUENCE: 0"
   for ((i=0;i<=$TT;i++));do
-    echo -e "#EXTINF:$SEGTIME, \nhttp://$HTTP_HOST/mpts/$BASEFILE/s-$i.mta"
+    echo -e "#EXTINF:$SEGTIME, \nhttp://$HTTP_HOST/mpts/$BASEFILE/s-$i.ts"
   done
   echo "#EXT-X-ENDLIST"
 else
@@ -27,7 +27,7 @@ else
     done
   else
     for ((i=0;i<=$TT;i++));do
-      echo -e "#EXTINF:$SEGTIME, \nhttp://$HTTP_HOST/mpts/$BASEFILE/s-$i.mta"
+      echo -e "#EXTINF:$SEGTIME, \nhttp://$HTTP_HOST/mpts/$BASEFILE/s-$i.ts"
     done
   fi
   echo "#EXT-X-ENDLIST"
