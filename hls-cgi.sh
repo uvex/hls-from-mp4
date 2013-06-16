@@ -7,7 +7,7 @@ FF=/usr/local/ffmpeg/bin/ffmpeg; FP=/usr/local/ffmpeg/bin/ffprobe
 INP="$MEDIADIR/$file"; [ ! -d $TSDIR ] && mkdir -p $TSDIR
 [ ! -f $MEDIADIR/$file ] && echo 'Status: 404 Not Found'
 ###Calculate number of fragments from file's time durations
-SEGTIME=5
+SEGTIME=10
 TT=$(($(date -u +%s -d "1970/01/01 $($FP $INP 2>&1|grep Duration:|sed 's/,//g'|awk '{print$2}')")/10))
 echo "Content-Type: application/x-mpegURL"
 echo ""
