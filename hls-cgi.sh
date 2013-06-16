@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 export $(sed 's/&/ /g'<<<$QUERY_STRING)
 BASEFILE=$(sed 's/.mp4//g' <<<$file)
 MEDIADIR=/data/media; TSDIR=$MEDIADIR/mpts/$BASEFILE
